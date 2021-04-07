@@ -1,0 +1,81 @@
+body {
+    font-family: Arial;
+}
+
+html {
+    background-color: black;
+}
+
+.container {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+
+/* 
+h1 {
+    color: white;
+} */
+
+.links line {
+    stroke: #999;
+    stroke-opacity: 0.9;
+    stroke-width: 2;
+}
+
+.nodes circle {
+    stroke: #000;
+    stroke-width: 1.5px;
+}
+
+text {
+    font-family: sans-serif;
+    font-size: 10px;
+    color: white;
+}
+
+.block {
+    width: 50px;
+    height: 75px;
+}
+
+.b1 {
+    background-color: #ff0000;
+}
+
+.b2 {
+    background-color: #ff9900;
+}
+
+.b3 {
+    background-color: #faff00;
+}
+
+.b4 {
+    background-color: #14ff00;
+}
+
+.b5 {
+    background-color: #00ffb2;
+}
+
+.b6 {
+    background-color: #00e0ff;
+}
+
+.b7 {
+    background-color: #0047ff;
+}
+
+.b8 {
+    background-color: #bd00ff;
+}
+
+.b9 {
+    background-color: #ff00c7;
+}
+
+.b10 {
+    background-color: #ffffff;
+}
