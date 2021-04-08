@@ -193,7 +193,9 @@ function rendersvg() {
         .append("line")
         .attr("stroke-width", function(d) {
             return 3;
-        })
+        });
+
+
 
     var node = svg
         .append("g")
@@ -212,47 +214,28 @@ function rendersvg() {
             .on("start", dragstarted)
             .on("drag", dragged)
             .on("end", dragended)
-        );
-
-
-    var lables = node
-        .append("text")
-        .text(function(d) {
-            return d.name;
-        })
-        .attr('x', 6)
-        .attr('y', 3);
-
-    node.append("title")
-        .text(function(d) { return d.name; });
-
-
-    // simulation
-    //     .nodes(graph.nodes)
-    //     .on("tick", ticked);
-
-    // simulation.force("link")
-    //     .links(graph.links);
+        )
 
 
 
-
-
-    // .append('text')
-    //     .attr('text', function(d) {
+    // var lables = node.append("text")
+    //     .text(function(d) {
     //         return d.name;
     //     })
-    //     .attr('color', function(d) {
-    //         return 'white';
-    //     })
-    //     .attr('x', 6)
-    //     .attr('y', 3);
+    //     .style('fill', "#fff")
+    //     .style('font-size', 10)
+    //     .attr('dx', 6)
+    //     .attr('dy', 3);
+
+    // node.append("title")
+    //     .text(function(d) { return d.name; });
 
 
-    // var lables = svg
+
+    // var lable = svg
     //     .append('g')
-    //     .attr('class', 'nodes')
-    //     .selectAll('text')
+    //     .attr('class', 'lables')
+    //     .selectAll('texts')
     //     .data(graph.nodes)
     //     .enter()
     //     .append('text')
@@ -263,10 +246,26 @@ function rendersvg() {
     //         return 'white';
     //     })
     //     .attr('x', 6)
-    //     .attr('y', 3);
+    //     .attr('y', 3)
+
 
     // node.append("title")
     //     .text(function(d) { return d.name; });
+
+    var text = svg
+        .append('svg:g')
+        .selectAll('g')
+        .data(graph.nodes)
+        .enter()
+        .append('svg:g')
+        .style('fill', "#fff")
+        .style('font-size', 10);
+
+    text.append('svg:text')
+        .attr('x', 12)
+        .attr('y', '.31em')
+        .text(function(d) { return d.name });
+
 
 
 
@@ -285,6 +284,11 @@ function rendersvg() {
                 return d.target.y;
             });
 
+
+        // node
+        //     .attr('transform', function(d) {
+        //         return 'translate(' + d.x + ',' + d.y + '(';
+        //     })
         node
             .attr("cx", function(d) {
                 return d.x;
@@ -292,6 +296,20 @@ function rendersvg() {
             .attr("cy", function(d) {
                 return d.y;
             });
+
+
+        text
+            .attr('transform', function(d) {
+                return 'translate(' + d.x + ',' + d.y + ')';
+            });
+
+        // .attr("cx", function(d) {
+        //     return d.x;
+        // })
+        // .attr("cy", function(d) {
+        //     return d.y;
+        // });
+
     }
 
     function dragstarted(d) {
@@ -299,6 +317,8 @@ function rendersvg() {
         d.fx = d.x;
         d.fy = d.y;
     }
+
+
 
     function dragged(d) {
         d.fx = d3.event.x;
