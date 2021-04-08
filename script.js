@@ -43,6 +43,8 @@ function gotAllArchives(err) {
 
 }
 
+
+
 //loop through the data and console log them 
 function consolelogArchives() {
     console.log("consolelogArchives()");
@@ -121,8 +123,8 @@ function showArchives() {
 
 //initilize svg or grab svg
 var svg = d3.select("svg");
-var width = svg.attr("width");
-var height = svg.attr("height");
+var width = +svg.attr("width");
+var height = +svg.attr("height");
 
 //intialize data
 var graph = {
@@ -179,10 +181,11 @@ function rendersvg() {
             })
             .links(graph.links)
         )
-
-    .force("charge", d3.forceManyBody().strength(-10))
+        .force("charge", d3.forceManyBody().strength(-100))
         .force("center", d3.forceCenter(width / 2, height / 2))
         .on("tick", ticked);
+
+
 
     var link = svg
         .append("g")
@@ -259,7 +262,7 @@ function rendersvg() {
         .enter()
         .append('svg:g')
         .style('fill', "#fff")
-        .style('font-size', 10);
+        .style('font-size', 5);
 
     text.append('svg:text')
         .attr('x', 12)
