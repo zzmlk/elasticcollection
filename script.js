@@ -185,9 +185,19 @@ function rendersvg() {
         .force("center", d3.forceCenter(width / 2, height / 2))
         .on("tick", ticked);
 
+    //add zoom capabilities 
 
 
-    var link = svg
+
+    var g = svg.append("g")
+        .attr("class", "everything");
+
+    var zoom_handler = d3.zoom()
+        .on("zoom", zoom_actions);
+
+    zoom_handler(svg);
+
+    var link = g
         .append("g")
         .attr("class", "links")
         .selectAll("line")
@@ -200,7 +210,7 @@ function rendersvg() {
 
 
 
-    var node = svg
+    var node = g
         .append("g")
         .attr("class", "nodes")
         .selectAll("circles")
@@ -221,41 +231,7 @@ function rendersvg() {
 
 
 
-    // var lables = node.append("text")
-    //     .text(function(d) {
-    //         return d.name;
-    //     })
-    //     .style('fill', "#fff")
-    //     .style('font-size', 10)
-    //     .attr('dx', 6)
-    //     .attr('dy', 3);
-
-    // node.append("title")
-    //     .text(function(d) { return d.name; });
-
-
-
-    // var lable = svg
-    //     .append('g')
-    //     .attr('class', 'lables')
-    //     .selectAll('texts')
-    //     .data(graph.nodes)
-    //     .enter()
-    //     .append('text')
-    //     .attr('text', function(d) {
-    //         return d.name;
-    //     })
-    //     .attr('color', function(d) {
-    //         return 'white';
-    //     })
-    //     .attr('x', 6)
-    //     .attr('y', 3)
-
-
-    // node.append("title")
-    //     .text(function(d) { return d.name; });
-
-    var text = svg
+    var text = g
         .append('svg:g')
         .selectAll('g')
         .data(graph.nodes)
@@ -269,7 +245,9 @@ function rendersvg() {
         .attr('y', '.31em')
         .text(function(d) { return d.name });
 
-
+    function zoom_actions() {
+        g.attr("transform", d3.event.transform)
+    }
 
 
     function ticked() {
@@ -288,10 +266,7 @@ function rendersvg() {
             });
 
 
-        // node
-        //     .attr('transform', function(d) {
-        //         return 'translate(' + d.x + ',' + d.y + '(';
-        //     })
+
         node
             .attr("cx", function(d) {
                 return d.x;
@@ -306,12 +281,7 @@ function rendersvg() {
                 return 'translate(' + d.x + ',' + d.y + ')';
             });
 
-        // .attr("cx", function(d) {
-        //     return d.x;
-        // })
-        // .attr("cy", function(d) {
-        //     return d.y;
-        // });
+
 
     }
 
@@ -333,4 +303,6 @@ function rendersvg() {
         d.fx = null;
         d.fy = null;
     }
+
+
 }
