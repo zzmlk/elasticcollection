@@ -91,13 +91,6 @@ console.log(nameArray);
 console.log(linkArray);
 
 
-
-
-
-
-
-
-
 //look through airtable, create elements and add the data to the page
 function showArchives() {
     console.log('showArchives()');
@@ -121,6 +114,8 @@ function showArchives() {
 
 }
 
+//----------------------------------------d3---------------------------------//
+
 //initilize svg or grab svg
 var svg = d3.select("svg");
 var width = +svg.attr("width");
@@ -142,8 +137,6 @@ var graph = {
     //     { name: "George" },
     //     { name: "Hanes" },
     //     { name: "Iris" },
-
-
     // ]
 
     links: []
@@ -184,9 +177,6 @@ function rendersvg() {
         .force("charge", d3.forceManyBody().strength(-100))
         .force("center", d3.forceCenter(width / 2, height / 2))
         .on("tick", ticked);
-
-    //add zoom capabilities 
-
 
 
     var g = svg.append("g")

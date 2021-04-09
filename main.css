@@ -36,46 +36,50 @@ text {
 }
 
 .block {
-    width: 50px;
-    height: 75px;
+    width: 40px;
+    height: 150px;
 }
 
 .b1 {
     background-color: #ff0000;
 }
 
-.b2 {
-    background-color: #ff9900;
-}
 
-.b3 {
+/* .b2 {
+    background-color: #ff9900;
+} */
+
+.b2 {
     background-color: #faff00;
 }
 
-.b4 {
+.b3 {
     background-color: #14ff00;
 }
 
-.b5 {
-    background-color: #00ffb2;
-}
 
-.b6 {
+/* .b5 {
+    background-color: #00ffb2;
+} */
+
+.b4 {
     background-color: #00e0ff;
 }
 
-.b7 {
+
+/* .b7 {
     background-color: #0047ff;
-}
+} */
 
-.b8 {
+
+/* .b8 {
     background-color: #bd00ff;
-}
+} */
 
-.b9 {
+.b5 {
     background-color: #ff00c7;
 }
 
-.b10 {
+.b6 {
     background-color: #ffffff;
 }
