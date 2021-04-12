@@ -18,12 +18,6 @@ html {
     display: flex;
 }
 
-
-/* 
-h1 {
-    color: white;
-} */
-
 .links line {
     stroke: #999;
     stroke-opacity: 0.9;
@@ -196,10 +190,6 @@ section div.dname span {
         -webkit-transform: scale(1);
         transform: scale(1)
     }
-    /*
-  from {background-color: red;opacity:0;-webkit-transform:scale(.3);transform:scale(.3)}
-  to {background-color: yellow;opacity:1;-webkit-transform:scale(1);transform:scale(1)}
-*/
 }
 
 .tongji {

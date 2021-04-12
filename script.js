@@ -73,10 +73,7 @@ function gotPageOfArchives(records, fetchNextPage) {
     fetchNextPage();
 }
 console.log(colorArray);
-/*
-console.log(nameArray);
-console.log(linkArray);
-*/
+
 
 
 //look through airtable, create elements and add the data to the page
@@ -86,14 +83,6 @@ function showArchives() {
         var photographer = document.createElement('h1');
         photographer.innerText = archive.fields.photographer;
         document.body.append(photographer);
-
-        // var location = document.createElement('p');
-        // location.innerText = archive.fields.location;
-        // document.body.append(location);
-
-        // var photo = document.createElement("img");
-        // photo.src = archive.fields.photo[0].url; //array starts at 0
-        // document.querySelector('.container').append(photo);
     });
 
     //render after dataset work
@@ -115,20 +104,6 @@ var height = svg.node().getBoundingClientRect().height;
 var atotal = 0;
 
 function qc(arr) {
-    /*
-        var resultObj = {};
-        var result = [];
-        var result2 = [];
-        for(var i=0; i<arr.length; i++){
-          if(result.indexOf(arr[i]) == -1){
-            result.push(arr[i]);
-          }else{
-          if(result2.indexOf(arr[i]) == -1){
-            result2.push(arr[i]);
-          }
-          }
-        }
-    */
 
     var obj = []
     arr.forEach((v, k) => {
@@ -142,6 +117,9 @@ function qc(arr) {
     });
     return obj;
 }
+
+//----json for the color stats---//
+//   *got help from friend//
 
 function rendersvg() {
     //     console.log('rendersvg()');
@@ -167,31 +145,6 @@ function rendersvg() {
             "</span>"
         );
     }
-    /*
-        carray.forEach(function(value, index, array) {
-    	    console.log(value);
-            var tongji = d3.select(".tongji")
-    		    .append("div")
-    		    .attr("class", "tiao");
-    		var bfb = Math.round(value / atotal * 10000) / 100.00;
-    		var tongjitext = tongji.html(
-    			"<label>"+index+"</label>"
-    			+"<span class=\"baifenbi\">"
-    			+"<span style=\"width: "+bfb+"%;background-color: "+array+"\"></span>"
-    			+"</span>"
-    		);
-        });
-        
-        var tongji = d3.select(".tongji")
-    	    .append("div")
-    	    .attr("class", "tiao");
-    	var tongjitext = tongji.html(
-    		"<label>North_America</label>"
-    		+"<span class=\"baifenbi\">"
-    		+"<span style=\"width: 80%;background-color: "+d.dotcolor+"\"></span>"
-    		+"</span>"
-    	);
-    */
 
 
 
@@ -305,30 +258,6 @@ function rendersvg() {
         });
     });
 
-    // node.on("click", function(d) {
-    //     var cw = width / 2;
-    //     var ch = height / 2;
-    //     alerttip.html("<div class=\"dcontent\"><a href=\"javascript:;\" id=\"close\"><span class=\"close\"></span></a>" +
-    //             "<div class=\"dcontent1\">" +
-    //             "<div class=\"dphoto\"><img src=\"" + d.photo[0].thumbnails.large.url + "\"></div>" +
-    //             "<div class=\"dcity\">" + d.region + "&nbsp;&nbsp;&nbsp;&nbsp;" + d.location + "</div>" +
-    //             "<div class=\"dname\"><span>" + d.name + "</span></div>" +
-    //             "</div>" +
-    //             "</div>")
-    //         .style("display", "block")
-    //         .attr("width", cw)
-    //         .attr("height", ch)
-    //         .style("margin-left", "-" + width / 4)
-    //         .style("margin-top", "-" + height / 4)
-    //         .style("background-color", d.dotcolor)
-    //     var closebtn = d3.selectAll("a")
-
-    //     closebtn.on("click", function() {
-    //         console.log("123");
-    //         alerttip.html("")
-    //             .style("display", "none")
-    //     });
-    // });
 
     function ticked() {
         link
@@ -385,42 +314,3 @@ function rendersvg() {
     }
 
 }
-
-// var bcolor = d3.selectAll(".block");
-// bcolor.on('click', function() {
-//     var color = d3.select(this).attr("param");
-//     //   alert(color);
-//     d3.select("svg").html("");
-
-//     function gotPageOfArchives2(records, fetchNextPage) {
-//         var nameArray = [];
-//         var linkArray = [];
-//         var graph = {
-//             nodes: [],
-//             links: []
-//         };
-
-//         records.forEach(function(archive) {
-//             if (archive.fields.color == color) {
-//                 const nodesObject = {
-//                     name: archive.fields.photographer.replace(/\s*/g, ""),
-//                     photo: archive.fields.photo,
-//                     location: archive.fields.location,
-//                     region: archive.fields.region,
-//                     dotcolor: archive.fields.color,
-//                 }
-//                 graph.nodes.push(nodesObject);
-//                 const nodesObject2 = {
-//                     source: archive.fields.photographer.replace(/\s*/g, ""),
-//                     target: archive.fields.photographer2.replace(/\s*/g, "")
-//                 }
-//                 graph.links.push(nodesObject2);
-//             }
-//         });
-//         fetchNextPage();
-//         localStorage.setItem("graph", JSON.stringify(graph));
-//         console.log(color, graph);
-//         rendersvg();
-//     }
-//     base("archive").select({}).eachPage(gotPageOfArchives2);
-// })
