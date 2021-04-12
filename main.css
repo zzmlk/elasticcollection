@@ -18,10 +18,22 @@ svg {
     display: inline-block;
 }
 
+header {
+    display: none;
+    width: 100vw;
+    height: 60px;
+    background-color: #fff;
+    color: black;
+}
+
 .container {
     margin: 0;
     padding: 0;
     display: flex;
+}
+
+#myDIV {
+    display: none;
 }
 
 .links line {
@@ -39,12 +51,6 @@ text {
     font-family: futura;
     font-size: 10px;
     color: white;
-}
-
-.block {
-    width: 40px;
-    height: 150px;
-    cursor: pointer;
 }
 
 section {
@@ -244,13 +250,46 @@ section div.dname span {
 }
 
 @media only screen and (max-width: 375px) {
-    .info {
-        width: 90%;
-        font-size: 15px;
-        line-height: normal;
-        top: 2vw;
+    h1 {
+        padding: 0;
+        margin: 0;
     }
-    .tongji {
+    header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 60px;
+        background-color: #fff;
+        color: black;
+        text-align: center;
+    }
+    .container .info {
+        display: none;
+    }
+    .container.tongji {
+        display: none;
+    }
+    .infophone {
+        color: white;
+        width: 90%;
+        font-size: 18px;
+        line-height: normal;
+        position: absolute;
+        top: 2vw;
+        left: 2vw;
+    }
+    #myDIV {
+        position: absolute;
+        top: 60px;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, .5);
+        backdrop-filter: blur(10px);
+        z-index: 10;
+    }
+    #myDIV .tongji {
+        font-size: 10px;
         width: 90%;
         display: inline-block;
         position: absolute;
@@ -262,6 +301,11 @@ section div.dname span {
         height: 100vh;
         display: inline-block;
         position: absolute;
-        top: 300px;
+        top: 60px;
+    }
+    section {
+        width: 80%;
+        margin-left: -40vw;
+        margin-top: -25vw;
     }
 }

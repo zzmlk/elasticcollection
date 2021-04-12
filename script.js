@@ -91,6 +91,8 @@ function showArchives() {
 
 }
 
+
+
 //----------------------------------------d3---------------------------------//
 
 //initilize svg or grab svg
@@ -313,4 +315,13 @@ function rendersvg() {
         d.fy = null;
     }
 
+}
+
+function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
 }
