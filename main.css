@@ -36,7 +36,7 @@ h1 {
 }
 
 text {
-    font-family: sans-serif;
+    font-family: futura;
     font-size: 10px;
     color: white;
 }
@@ -58,7 +58,11 @@ section {
     animation-duration: .6s;
     background-color: yellow;
     border-radius: 10px;
-    box-shadow: 0 0 128px rgba(255, 255, 0, .6);
+    box-shadow: 0 0 100px rgba(255, 255, 0, .5);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 
 div.dcontent {
@@ -136,7 +140,11 @@ div.dcontent1 {
     border-radius: 50%;
     text-align: center;
     text-decoration: none;
-    box-shadow: 0 0 8px rgba(0, 0, 0, .3);
+    box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
 }
 
 section div.dphoto {
@@ -159,13 +167,13 @@ section div.dcity {
 section div.dcity {
     float: right;
     /* display: inline-block; */
-    font-family: "Times New Roman", Georgia, Serif;
+    font-family: futura;
 }
 
 section div.dname span {
     font-size: 18px;
     font-weight: bold;
-    font-family: "Times New Roman", Georgia, Serif;
+    font-family: futura;
 }
 
 @keyframes example {

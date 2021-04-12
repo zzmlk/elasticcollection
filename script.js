@@ -1,16 +1,16 @@
 //check if js is linked
-//load airtable data and call it Airtable (find a hotel)
+//load airtable data and call it Airtable
 var Airtable = require('airtable');
 
-//use airtable lib, connecting data using API key and airtable base key(register guest info)
+//use airtable lib, connecting data using API key and airtable base key
 var base = new Airtable({ apiKey: 'keygDQVvm6DG6i9yJ' }).base('appQ3WXISaNO6PIfI');
 
-//get the collection base (guest check in)
+//get the collection base 
 //select all the records (rows)
 //specify function that will recieve the data
 base("archive").select({}).eachPage(gotPageOfArchives, gotAllArchives);
 
-//create an empty array to hold the data (get a room)
+//create an empty array to hold the data 
 var archives = [];
 
 //callback function to recive the data 
@@ -206,7 +206,7 @@ function rendersvg() {
             })
             .links(graph.links)
         )
-        .force("charge", d3.forceManyBody().strength(-500))
+        .force("charge", d3.forceManyBody().strength(-300))
         .force("center", d3.forceCenter(width / 2, height / 2))
         .on("tick", ticked);
 
@@ -268,6 +268,7 @@ function rendersvg() {
         .style('fill', "#fff")
         .style('font-size', 5);
 
+
     text.append('svg:text')
         .attr('x', 12)
         .attr('y', '.31em')
@@ -278,11 +279,14 @@ function rendersvg() {
         alerttip.style("transform", d3.event.transform)
     }
 
+
+    //clikc the text to show detailed info
+
     text.on("click", function(d) {
         alerttip.html("<div class=\"dcontent\"><a href=\"javascript:;\" id=\"close\"><span class=\"close\"></span></a>" +
                 "<div class=\"dcontent1\">" +
                 "<div class=\"dphoto\"><img src=\"" + d.photo[0].thumbnails.large.url + "\"></div>" +
-                "<div class=\"dcity\">" + d.region + "&nbsp;&nbsp;&nbsp;&nbsp;" + d.location + "</div>" +
+                "<div class=\"dcity\">" + d.location + "</div>" +
                 "<div class=\"dname\"><span>" + d.name + "</span></div>" +
                 "</div>" +
                 "</div>")
@@ -301,30 +305,30 @@ function rendersvg() {
         });
     });
 
-    node.on("click", function(d) {
-        var cw = width / 2;
-        var ch = height / 2;
-        alerttip.html("<div class=\"dcontent\"><a href=\"javascript:;\" id=\"close\"><span class=\"close\"></span></a>" +
-                "<div class=\"dcontent1\">" +
-                "<div class=\"dphoto\"><img src=\"" + d.photo[0].thumbnails.large.url + "\"></div>" +
-                "<div class=\"dcity\">" + d.region + "&nbsp;&nbsp;&nbsp;&nbsp;" + d.location + "</div>" +
-                "<div class=\"dname\"><span>" + d.name + "</span></div>" +
-                "</div>" +
-                "</div>")
-            .style("display", "block")
-            .attr("width", cw)
-            .attr("height", ch)
-            .style("margin-left", "-" + width / 4)
-            .style("margin-top", "-" + height / 4)
-            .style("background-color", d.dotcolor)
-        var closebtn = d3.selectAll("a")
+    // node.on("click", function(d) {
+    //     var cw = width / 2;
+    //     var ch = height / 2;
+    //     alerttip.html("<div class=\"dcontent\"><a href=\"javascript:;\" id=\"close\"><span class=\"close\"></span></a>" +
+    //             "<div class=\"dcontent1\">" +
+    //             "<div class=\"dphoto\"><img src=\"" + d.photo[0].thumbnails.large.url + "\"></div>" +
+    //             "<div class=\"dcity\">" + d.region + "&nbsp;&nbsp;&nbsp;&nbsp;" + d.location + "</div>" +
+    //             "<div class=\"dname\"><span>" + d.name + "</span></div>" +
+    //             "</div>" +
+    //             "</div>")
+    //         .style("display", "block")
+    //         .attr("width", cw)
+    //         .attr("height", ch)
+    //         .style("margin-left", "-" + width / 4)
+    //         .style("margin-top", "-" + height / 4)
+    //         .style("background-color", d.dotcolor)
+    //     var closebtn = d3.selectAll("a")
 
-        closebtn.on("click", function() {
-            console.log("123");
-            alerttip.html("")
-                .style("display", "none")
-        });
-    });
+    //     closebtn.on("click", function() {
+    //         console.log("123");
+    //         alerttip.html("")
+    //             .style("display", "none")
+    //     });
+    // });
 
     function ticked() {
         link
@@ -382,41 +386,41 @@ function rendersvg() {
 
 }
 
-var bcolor = d3.selectAll(".block");
-bcolor.on('click', function() {
-    var color = d3.select(this).attr("param");
-    //   alert(color);
-    d3.select("svg").html("");
+// var bcolor = d3.selectAll(".block");
+// bcolor.on('click', function() {
+//     var color = d3.select(this).attr("param");
+//     //   alert(color);
+//     d3.select("svg").html("");
 
-    function gotPageOfArchives2(records, fetchNextPage) {
-        var nameArray = [];
-        var linkArray = [];
-        var graph = {
-            nodes: [],
-            links: []
-        };
+//     function gotPageOfArchives2(records, fetchNextPage) {
+//         var nameArray = [];
+//         var linkArray = [];
+//         var graph = {
+//             nodes: [],
+//             links: []
+//         };
 
-        records.forEach(function(archive) {
-            if (archive.fields.color == color) {
-                const nodesObject = {
-                    name: archive.fields.photographer.replace(/\s*/g, ""),
-                    photo: archive.fields.photo,
-                    location: archive.fields.location,
-                    region: archive.fields.region,
-                    dotcolor: archive.fields.color,
-                }
-                graph.nodes.push(nodesObject);
-                const nodesObject2 = {
-                    source: archive.fields.photographer.replace(/\s*/g, ""),
-                    target: archive.fields.photographer2.replace(/\s*/g, "")
-                }
-                graph.links.push(nodesObject2);
-            }
-        });
-        fetchNextPage();
-        localStorage.setItem("graph", JSON.stringify(graph));
-        console.log(color, graph);
-        rendersvg();
-    }
-    base("archive").select({}).eachPage(gotPageOfArchives2);
-})
+//         records.forEach(function(archive) {
+//             if (archive.fields.color == color) {
+//                 const nodesObject = {
+//                     name: archive.fields.photographer.replace(/\s*/g, ""),
+//                     photo: archive.fields.photo,
+//                     location: archive.fields.location,
+//                     region: archive.fields.region,
+//                     dotcolor: archive.fields.color,
+//                 }
+//                 graph.nodes.push(nodesObject);
+//                 const nodesObject2 = {
+//                     source: archive.fields.photographer.replace(/\s*/g, ""),
+//                     target: archive.fields.photographer2.replace(/\s*/g, "")
+//                 }
+//                 graph.links.push(nodesObject2);
+//             }
+//         });
+//         fetchNextPage();
+//         localStorage.setItem("graph", JSON.stringify(graph));
+//         console.log(color, graph);
+//         rendersvg();
+//     }
+//     base("archive").select({}).eachPage(gotPageOfArchives2);
+// })
