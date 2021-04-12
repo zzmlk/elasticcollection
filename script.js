@@ -146,6 +146,17 @@ function rendersvg() {
             "<span style=\"width: " + bfb + "%;background-color: " + color[0] + "\"></span>" +
             "</span>"
         );
+        var tongjiphone = d3.select(".tongjiphone")
+            .append("div")
+            .attr("class", "tiao");
+        var bfb = Math.round(carray[k] / atotal * 10000) / 100.00;
+        var color = k.split("|||");
+        var tongjitext2 = tongjiphone.html(
+            "<label>" + color[1] + "</label>" +
+            "<span class=\"baifenbi\">" +
+            "<span style=\"width: " + bfb + "%;background-color: " + color[0] + "\"></span>" +
+            "</span>"
+        );
     }
 
 
