@@ -12,6 +12,12 @@ html {
     overflow: hidden
 }
 
+svg {
+    width: 100vw;
+    height: 100vh;
+    display: inline-block;
+}
+
 .container {
     margin: 0;
     padding: 0;
@@ -235,4 +241,27 @@ section div.dname span {
     left: 2vw;
     top: 25vw;
     line-height: 22px;
+}
+
+@media only screen and (max-width: 375px) {
+    .info {
+        width: 90%;
+        font-size: 15px;
+        line-height: normal;
+        top: 2vw;
+    }
+    .tongji {
+        width: 90%;
+        display: inline-block;
+        position: absolute;
+        left: 2vw;
+        top: 70vw;
+    }
+    svg {
+        width: 100vw;
+        height: 100vh;
+        display: inline-block;
+        position: absolute;
+        top: 300px;
+    }
 }
