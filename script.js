@@ -61,6 +61,7 @@ function gotPageOfArchives(records, fetchNextPage) {
             location: archive.fields.location,
             region: archive.fields.region,
             dotcolor: archive.fields.color,
+            caption: archive.fields.caption,
         }
         graph.nodes.push(nodesObject);
         const nodesObject2 = {
